@@ -1,5 +1,7 @@
 package definition;
 
+import adt.ContactADT;
+
 import java.util.ArrayList;
 
 
@@ -13,13 +15,13 @@ public class ContactList<E> implements ContactADT<E> {
 
     //Created addFirst method
     private void addFirst(E data){
-        head = new Node<>((Person) data,head);
+        head = new Node<>((person) data,head);
         size++;
     }
 
     //Created addAfter method
     private void addAfter (Node <E> node , E data){
-        node.next = new Node<>((Person) data , node.next);
+        node.next = new Node<>((person) data , node.next);
         size++;
     }
     public int getSize() {
@@ -39,7 +41,7 @@ public class ContactList<E> implements ContactADT<E> {
             Node<E> count = getNode(index - 1);
             addAfter(count,data);
         }
-        //return false;
+        return false;
     }
     private Node<E> getNode(int index){
         Node<E> response = head;
@@ -63,8 +65,8 @@ public class ContactList<E> implements ContactADT<E> {
         return false;
     }
 
-    private Person deleteFromContactsFirst(){
-        Person response = null;
+    private person deleteFromContactsFirst(){
+        person response = null;
         Node<E> count= head;
         if (head != null){
             head=head.getNext();
@@ -77,8 +79,8 @@ public class ContactList<E> implements ContactADT<E> {
         return response;
     }
 
-    private Person deleteFromContactsAfter(Node<E> node) {
-        Person response = null;
+    private person deleteFromContactsAfter(Node<E> node) {
+        person response = null;
         Node<E> count = node.getNext();
 
         if (count != null) {
@@ -98,7 +100,7 @@ public class ContactList<E> implements ContactADT<E> {
         if (size!=0){
             System.out.println("---Here are all your contacts---");
             for (int i=0;i<size;i++){
-                Person data = this.getNode(i).getData();
+                person data = this.getNode(i).getData();
                 System.out.println(data);
             }
         }
@@ -163,17 +165,17 @@ public class ContactList<E> implements ContactADT<E> {
     }
 
     private static class Node<E>{
-        private Person data;
+        private person data;
         private Node<E> next;
 
-        private Node(Person data , Node<E> next){
+        private Node(person data , Node<E> next){
             this.data = data;
             this.next = next;
         }
-        private Person getData() {
+        private person getData() {
             return data;
         }
-        private void setData(Person data) {
+        private void setData(person data) {
             this.data = data;
         }
         private Node<E> getNext() {
